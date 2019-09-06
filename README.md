@@ -54,3 +54,78 @@ $ yarn run start
   }
 }
 ```
+
+Access to `localhost:4000/graphql`
+
+## GraphQL Schema
+
+### get query
+
+```js
+const { buildSchema } = require('graphql');
+
+const schema = buildSchema(`
+  type Query {
+    course(id: Int!): Course
+    courses(topic: String): [Course]
+  },
+  type Course {
+    id: Int
+    title: String
+    author: String
+    description: String
+    topic: String
+    url: String
+  }
+`);
+
+// get functions 
+const getCourse = function(args) {...}
+const getCourses = function(args) {...}
+
+// Root resolver
+const root = {
+  course: getCourse,
+  courses: getCourses,
+};
+```
+
+e.g.  
+**Get course by CourseID**
+
+`query`
+```query
+query getSingleCourse($courseID: Int!) {
+ course(id: $courseID) {
+  title
+  author
+  description
+  topic
+  url
+ }
+}
+```
+`params`
+```json
+{
+  "courseID": 1
+}
+```
+
+**Get Courses by topic**
+
+`query`
+```query
+query getCourses($topic: String!) {
+ courses(topic: $topic) {
+  title
+  url
+ }
+}
+```
+`params`
+```json
+{
+  "topics": "Node.js"
+}
+```
