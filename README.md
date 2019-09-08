@@ -129,3 +129,37 @@ query getCourses($topic: String!) {
   "topics": "Node.js"
 }
 ```
+
+### update query
+
+create `Type Mutation` schema for update 
+
+```js
+// add schema to type Mutation & update query method
+const schema = buildSchema(`
+  ...
+  type Mutation {
+    updateCourseTopic(id: Int!, topic: String): Course
+  },
+  type Course {
+    id: Int
+    title: String
+    author: String
+    description: String
+    topic: String
+    url: String
+  }
+`);
+
+// Add update method
+const updateCourseTopic = function({id, topic}) {
+  ...
+  return course;
+};
+
+// Add endpint
+const root = {
+  ...
+  updateCourseTopic: updateCourseTopic,
+}
+```

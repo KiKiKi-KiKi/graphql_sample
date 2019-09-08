@@ -22,11 +22,26 @@ const getCourses = function(args) {
   }
 }
 
+// update queries
+const updateCourseTopic = function({id, topic}) {
+  coursesData.map(course => {
+    if ( course.id === id ) {
+      course.topic = topic;
+      return course;
+    }
+  });
+
+  return coursesData.filter(course => {
+    return course.id === id;
+  })[0];
+};
+
 // Root resolver
 const root = {
   message: () => 'Hello GraphQL!',
   course: getCourse,
   courses: getCourses,
+  updateCourseTopic: updateCourseTopic,
 }
 
 // Create express server
@@ -40,5 +55,5 @@ app.use('/graphql', expressGraphQL({
 }));
 
 app.listen(port, () => {
-  console.log('Express GraphQL Server Running On localhost:4000/graphql');
+  console.log(`Express GraphQL Server Running On localhost:${port}/graphql`);
 });
