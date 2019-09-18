@@ -1,3 +1,45 @@
+# GraphQL with React
+
+ref. https://qiita.com/seya/items/e1d8e77352239c4c4897
+
+## set up
+
+### Create GitHub API token
+
+get token [https://github.com/settings/tokens](https://github.com/settings/tokens)
+
+1. Generate New Tokens
+1. ✓ public repo
+1. add description
+1. generate token
+
+```sh
+$ touch .env
+```
+
+`.env`
+```
+REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN=<GitHub API token>
+```
+
+## install GraphQL & Apollo packages
+
+```sh
+$ yarn add apollo-boost react-apollo graphql-tag graphql
+```
+
+- `apollo-boost` ... Quick start to use Apollo  
+  cf. https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost
+- `react-apollo` ... React - GrapthQL クエリの繋ぎこみをサポート  
+  cf. https://github.com/apollographql/react-apollo
+- `graphql-tag` ... GraphQLクエリをテンプレートリテラルでかけるようにする  
+  cf. https://github.com/apollographql/graphql-tag
+- `graphql` ... cf.  
+  - https://www.npmjs.com/package/graphql  
+  - https://github.com/graphql/graphql-js
+
+# create react app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
