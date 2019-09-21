@@ -30,13 +30,41 @@ $ yarn add apollo-boost react-apollo graphql-tag graphql
 
 - `apollo-boost` ... Quick start to use Apollo  
   cf. https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost
-- `react-apollo` ... React - GrapthQL クエリの繋ぎこみをサポート  
-  cf. https://github.com/apollographql/react-apollo
+- ~~`react-apollo` ... React - GrapthQL クエリの繋ぎこみをサポート  
+  cf. https://github.com/apollographql/react-apollo~~
+- `@apollo/react-hooks` ... React hooks  
+  cf. https://www.apollographql.com/docs/react/essentials/get-started/
 - `graphql-tag` ... GraphQLクエリをテンプレートリテラルでかけるようにする  
   cf. https://github.com/apollographql/graphql-tag
 - `graphql` ... cf.  
   - https://www.npmjs.com/package/graphql  
   - https://github.com/graphql/graphql-js
+
+## @apollo/react-hooks
+
+ref. https://www.apollographql.com/docs/react/essentials/get-started/
+
+### `ApolloProvider`
+
+> The `ApolloProvider` is similar to React's `Context.Provider`. It wraps your React app and places the client on the context, which allows you to access it from anywhere in your component tree.
+
+### `useQuery` (Custom Hook)
+
+> Once your `ApolloProvider` is hooked up, you're ready to start requesting data with the `useQuery` hook!
+
+> First, pass your GraphQL query wrapped in the `gql` function into the `useQuery` hook. When your component renders and the `useQuery` hook runs, a result object will be returned containing `loading`, `error`, and `data` properties. Apollo Client tracks error and loading state for you, which will be reflected in the `loading` and `error` properties. Once the result of your query comes back, it will be attached to the `data` property.
+
+```js
+const { loading, error, data } = useQuery( gqlQuery );
+```
+
+`useQuery` に GraphQL の query を渡すカスタムフック  
+Apollo Client は query の結果をトラッキングする
+
+- `loading` ... ロード中
+- `error` ... エラーが返された
+- `data` ... queryの結果が返ってきたら `data` に割り当てられる
+
 
 # create react app
 
