@@ -65,6 +65,18 @@ Apollo Client は query の結果をトラッキングする
 - `error` ... エラーが返された
 - `data` ... queryの結果が返ってきたら `data` に割り当てられる
 
+### `useMutation` (Custom Hook)
+
+> The `useMutation` React hook is the primary API for executing mutations in an Apollo application. To run a mutation, you first call `useMutation` within a React component and pass it a GraphQL string that represents the mutation. When your component renders, `useMutation` returns a tuple that includes:
+>
+> - A **mutate function** that you can call at any time to execute the mutation
+> - An object with fields that represent the current status of the mutation's execution
+
+TODO: WIP :book:
+
+## GitHub GrapQL API
+
+https://developer.github.com/v4/
 
 # create react app
 
