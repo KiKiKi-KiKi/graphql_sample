@@ -15,6 +15,15 @@ const client = new ApolloClient({
       }
     });
   },
+  // common error handle
+  onError: ({ graphQLErrors, networkError }) => {
+    if ( graphQLErrors ) {
+      console.error('graphQLErrors', graphQLErrors);
+    }
+    if ( networkError ) {
+      console.error('networkError', networkError);
+    }
+  }
 });
 
 ReactDOM.render(
