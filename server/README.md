@@ -163,3 +163,60 @@ const root = {
   updateCourseTopic: updateCourseTopic,
 }
 ```
+
+## Express CORS
+
+CORS: Cross-origin resource sharing
+
+ref. 
+- https://www.npmjs.com/package/cors
+- https://qiita.com/chenglin/items/5e563e50d1c32dadf4c3
+
+### cors
+
+```sh
+$ npm install cors
+```
+
+##### すべてのAPIをCORS許可したい場合
+
+```js
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors());
+
+app.get('/user/:userId', function (req, res, next) {
+  res.json({result: '任意のオリジンからすべてのAPIがアクセスOK'})
+})
+```
+
+##### 個別のAPIをCORS許可したい場合
+
+エンドポイントの第二引数に `cros()` を渡す
+
+```js
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.get(
+  '/user/:userId',
+  cors(),
+  function (req, res, next) {
+    res.json({result: '任意のオリジンからこのAPIのみアクセスOK'})
+  }
+);
+```
+
+##### CORS options
+
+- origin
+- methods
+- allowedHeaders
+- exposedHeaders
+- credentials
+- maxAge
+- preflightContinue
+- optionsSuccessStatus
